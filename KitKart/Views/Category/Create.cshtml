@@ -1,0 +1,40 @@
+﻿@model KitKart.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add Item Category</h1>
+
+<hr />
+
+@using (Html.BeginForm("Create", "Category"))
+{
+    @Html.AntiForgeryToken()
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="categoryName" class="control-label"></label>
+                <input asp-for="categoryName" class="form-control" />
+                <span asp-validation-for="categoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoryDescription" class="control-label"></label>
+                <input asp-for="categoryDescription" class="form-control" />
+                <span asp-validation-for="categoryDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(m =>m.Id)
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+}
+<div>
+    <a asp-action="Index" >Back to List</a>
+</div>
+

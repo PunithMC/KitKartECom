@@ -1,0 +1,53 @@
+﻿@model KitKart.ViewModel.ProductFormViewModel;
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Welcom To Kitkart !.... One Stop For All Needs </h1>
+
+<hr />
+@using (Html.BeginForm("Create","Product")){
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="kartitems.itemName" class="control-label"></label>
+                <input asp-for="kartitems.itemName" class="form-control" />
+                <span asp-validation-for="kartitems.itemName" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="kartitems.category.Id" class="control-label"></label>
+                    @Html.DropDownListFor(model=>model.kartitems.CategoryId,new SelectList(Model.categories,"Id","categoryName","Select Category"),new {@class = "form-control"} )
+                    <span asp-validation-for="kartitems.category.categoryName" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <label asp-for="kartitems.quantity" class="control-label"></label>
+                <input asp-for="kartitems.quantity" class="form-control" />
+                <span asp-validation-for="kartitems.quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kartitems.price" class="control-label"></label>
+                <input asp-for="kartitems.price" class="form-control" />
+                <span asp-validation-for="kartitems.price" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="kartitems.description" class="control-label"></label>
+                <input asp-for="kartitems.description" class="form-control" />
+                <span asp-validation-for="kartitems.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Product" class="btn btn-primary mr-2" />
+                <a asp-action="Index" class="btn btn-primary">back</a>
+            </div>
+                
+        </form>
+    </div>
+</div>
+}
+@*<div>
+    <a asp-action="Category/Index" class="btn btn-primary">Back to List</a>
+</div>*@
+
